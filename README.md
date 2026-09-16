@@ -65,31 +65,31 @@ Click a task title to edit it in place, or select it and press `e` (or `Enter`).
 
 Select a task and press `x` (or `Space`), or click its circle. Completed tasks move out of the way. Toggle "Terminées" in the top bar to see and reopen them.
 
-## 4. Star it to follow it
+## 4. Switch between list and board
+
+![Board view: one column per project](docs/screenshot-board.png)
+
+Press `b` to toggle between the global list and the board (one column per project, Kanban style). The board respects your active filters, including the "Suivies" followed filter, so `f` then `b` gives you a board of only your starred work.
+
+## 5. Star it to follow it
 
 ![The Suivies view: only followed tasks, with the vertical sidebar navigation](docs/screenshot-followed.png)
 
 Press `s` on a task (or click its star) to follow it. Then press `f`, or click **Suivies** in the top bar, to filter down to just your followed tasks across every project. The left sidebar is your vertical navigation: "Toutes les tâches" for the global view, "Suivies" for followed only, and one entry per project below.
 
-## 5. Organize with projects
+## 6. Organize with projects
 
 - **Create a project** from the sidebar ("Nouveau projet"), or just by tagging a task with a `#name` that does not exist yet.
 - **Jump to a project** by pressing its number: `1` through `9` map to your projects in order. Press `0` to return to the global "Toutes les tâches" view.
 - Each project gets a distinct color, applied automatically to its tag everywhere.
 
-## 6. Move a task to another project
+## 7. Move a task to another project
 
 Click a task's colored project tag. A picker pops up; choose another project and the task moves. This is the quickest way to reclassify something without editing it.
 
-## 7. Reorder tasks
+## 8. Reorder tasks
 
 Drag and drop any task to reorder it, in both the list and the board. The task you just moved keeps focus so you do not lose your place. From the keyboard, select a task and press `Cmd/Ctrl + Up` or `Cmd/Ctrl + Down` to nudge it up or down.
-
-## 8. Switch between list and board
-
-![Board view: one column per project](docs/screenshot-board.png)
-
-Press `b` to toggle between the global list and the board (one column per project, Kanban style). The board respects your active filters, including the "Suivies" followed filter, so `f` then `b` gives you a board of only your starred work.
 
 ## 9. Search
 

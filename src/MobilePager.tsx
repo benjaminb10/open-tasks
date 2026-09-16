@@ -21,8 +21,8 @@ export default function MobilePager() {
   const setSearch = useUI((s) => s.setSearch)
 
   const pages: Page[] = [
-    { id: ALL, name: 'Toutes' },
-    { id: STARRED, name: 'Suivies' },
+    { id: ALL, name: 'All' },
+    { id: STARRED, name: 'Followed' },
     ...projects.map((p) => ({ id: p.id, name: p.name, color: DOT[p.color] })),
   ]
 
@@ -70,7 +70,7 @@ export default function MobilePager() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               onBlur={() => !search && setSearchOpen(false)}
-              placeholder="Rechercher…"
+              placeholder="Search…"
               className="min-w-0 flex-1 rounded-lg bg-[var(--color-app)] px-3 py-1.5 text-[15px] outline-none"
             />
           ) : (
@@ -135,7 +135,7 @@ export default function MobilePager() {
                 {done.length > 0 && (
                   <>
                     <div className="mt-4 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-faint)]">
-                      Terminées · {done.length}
+                      Completed · {done.length}
                     </div>
                     <div className="opacity-80">
                       {done.map((t) => (
@@ -146,7 +146,7 @@ export default function MobilePager() {
                 )}
                 {list.length === 0 && (
                   <div className="grid place-items-center py-20 text-center text-[13px] text-[var(--color-faint)]">
-                    Aucune tâche ici.
+                    No task here.
                   </div>
                 )}
               </div>
@@ -165,7 +165,7 @@ function MobileQuickAdd({ pageId }: { pageId: string }) {
   const targetId =
     pageId !== ALL && pageId !== STARRED
       ? pageId
-      : (projects.find((p) => p.name === 'Mes tâches') ?? projects[0])?.id
+      : (projects.find((p) => p.name === 'Inbox') ?? projects[0])?.id
 
   function commit() {
     if (!text.trim() || !targetId) return
@@ -184,7 +184,7 @@ function MobileQuickAdd({ pageId }: { pageId: string }) {
       <div className="flex items-center gap-2 rounded-xl border border-[var(--color-line)] bg-[var(--color-panel)] px-3 py-2.5">
         <button
           type="submit"
-          aria-label="Ajouter"
+          aria-label="Add"
           className="grid h-7 w-7 shrink-0 place-items-center rounded-lg text-[var(--color-accent)] active:bg-[var(--color-line)]"
         >
           <Plus className="h-[18px] w-[18px]" />
@@ -199,7 +199,7 @@ function MobileQuickAdd({ pageId }: { pageId: string }) {
             }
           }}
           enterKeyHint="done"
-          placeholder="Ajouter une tâche…"
+          placeholder="Add a task…"
           className="min-w-0 flex-1 bg-transparent text-[15px] outline-none placeholder:text-[var(--color-faint)]"
         />
       </div>

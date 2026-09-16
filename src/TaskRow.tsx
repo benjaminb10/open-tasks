@@ -96,7 +96,7 @@ export default function TaskRow({
             ? 'text-[var(--color-accent)]'
             : 'text-[var(--color-faint)] hover:text-[var(--color-accent)]'
         }`}
-        title="Cocher (x)"
+        title="Toggle done (x)"
       >
         {task.done ? (
           <CheckCircle className="h-[19px] w-[19px]" />
@@ -139,7 +139,7 @@ export default function TaskRow({
               e.stopPropagation()
               setProjOpen((o) => !o)
             }}
-            title="Changer de projet"
+            title="Change project"
             className="flex items-center gap-1.5 rounded-full px-2 py-[3px] text-[11.5px] font-medium transition-transform hover:scale-[1.03]"
             style={{ background: chipBg(project.color), color: chipText(project.color) }}
           >
@@ -215,7 +215,7 @@ export default function TaskRow({
             deleteTask(task.id)
           }}
           className="grid h-6 w-6 place-items-center rounded-md text-[var(--color-faint)] opacity-100 transition hover:bg-[var(--color-app)] hover:text-red-500 md:opacity-0 md:group-hover:opacity-100"
-          title="Supprimer (⌫)"
+          title="Delete (⌫)"
         >
           <Trash className="h-[15px] w-[15px]" />
         </button>

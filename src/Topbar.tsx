@@ -19,7 +19,7 @@ export default function Topbar({
 
   const project = projects.find((p) => p.id === filter)
   const title =
-    filter === ALL ? 'Toutes les tâches' : filter === STARRED ? 'Suivies' : project?.name
+    filter === ALL ? 'All tasks' : filter === STARRED ? 'Followed' : project?.name
 
   const scope = tasks.filter((t) =>
     filter === ALL ? true : filter === STARRED ? t.starred : t.projectId === filter,
@@ -50,12 +50,12 @@ export default function Topbar({
         <button
           onClick={() => project && setProjectEditorOpen(true)}
           className="truncate text-[17px] font-semibold tracking-tight"
-          title={project ? 'Modifier le projet' : undefined}
+          title={project ? 'Edit project' : undefined}
         >
           {title}
         </button>
         <span className="shrink-0 text-[13px] text-[var(--color-faint)]">
-          {open} {open > 1 ? 'ouvertes' : 'ouverte'}
+          {open} open
         </span>
       </div>
 
@@ -73,7 +73,7 @@ export default function Topbar({
               ;(e.target as HTMLInputElement).blur()
             }
           }}
-          placeholder="Rechercher…"
+          placeholder="Search…"
           className="w-36 bg-transparent text-[13px] outline-none placeholder:text-[var(--color-faint)]"
         />
         <kbd className="rounded bg-[var(--color-line)] px-1 text-[10px] text-[var(--color-faint)]">
@@ -88,10 +88,10 @@ export default function Topbar({
             ? 'bg-[color-mix(in_srgb,#f59e0b_16%,transparent)] text-amber-400'
             : 'text-[var(--color-muted)] hover:bg-[var(--color-line)]'
         }`}
-        title="Afficher uniquement les suivies (f)"
+        title="Show followed only (f)"
       >
         <Star className="h-[14px] w-[14px]" />
-        Suivies {starred > 0 && <span className="tabular-nums opacity-70">{starred}</span>}
+        Followed {starred > 0 && <span className="tabular-nums opacity-70">{starred}</span>}
       </button>
 
       <button
@@ -101,15 +101,15 @@ export default function Topbar({
             ? 'bg-[color-mix(in_srgb,var(--color-accent)_12%,transparent)] text-[var(--color-accent)]'
             : 'text-[var(--color-muted)] hover:bg-[var(--color-line)]'
         }`}
-        title="Afficher les tâches terminées"
+        title="Show completed tasks"
       >
-        Terminées {done > 0 && <span className="tabular-nums opacity-70">{done}</span>}
+        Completed {done > 0 && <span className="tabular-nums opacity-70">{done}</span>}
       </button>
 
       <button
         onClick={toggleView}
         className="grid h-8 w-8 place-items-center rounded-lg text-[var(--color-muted)] transition-colors hover:bg-[var(--color-line)]"
-        title={view === 'list' ? 'Vue tableau (b)' : 'Vue liste (b)'}
+        title={view === 'list' ? 'Board view (b)' : 'List view (b)'}
       >
         {view === 'list' ? <Board className="h-[18px] w-[18px]" /> : <List className="h-[18px] w-[18px]" />}
       </button>

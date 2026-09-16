@@ -46,7 +46,7 @@ export default function ProjectEditor() {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-3 text-[13px] font-semibold text-[var(--color-muted)]">
-          Modifier le projet
+          Edit project
         </div>
         <input
           ref={inputRef}
@@ -85,7 +85,7 @@ export default function ProjectEditor() {
               className="flex items-center gap-1.5 rounded-lg bg-red-500 px-3 py-1.5 text-[13px] font-medium text-white"
             >
               <Trash className="h-4 w-4" />
-              Supprimer {taskCount > 0 ? `(${taskCount} tâches)` : ''} — confirmer
+              Delete {taskCount > 0 ? `(${taskCount} tasks)` : ''}, confirm
             </button>
           ) : (
             <button
@@ -93,7 +93,7 @@ export default function ProjectEditor() {
               className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[13px] text-red-500 hover:bg-[color-mix(in_srgb,red_10%,transparent)]"
             >
               <Trash className="h-4 w-4" />
-              Supprimer
+              Delete
             </button>
           )}
           <button

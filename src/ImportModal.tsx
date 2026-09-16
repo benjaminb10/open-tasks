@@ -36,9 +36,9 @@ export default function ImportModal() {
       try {
         const parsed = parseTakeout(JSON.parse(text))
         if (parsed.length === 0)
-          setError('Aucune liste trouvée — est-ce bien le fichier Tasks.json de Takeout ?')
+          setError('No list found. Is this the Tasks.json file from Takeout?')
       } catch {
-        setError('Fichier illisible : ce n’est pas du JSON valide.')
+        setError('Unreadable file: this is not valid JSON.')
       }
     }
     reader.readAsText(file)
@@ -64,20 +64,20 @@ export default function ImportModal() {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="text-[16px] font-semibold tracking-tight">
-          Importer depuis Google Tasks
+          Import from Google Tasks
         </div>
 
         <ol className="mt-3 space-y-1 text-[13px] leading-relaxed text-[var(--color-muted)]">
           <li>
-            1. Va sur{' '}
+            1. Go to{' '}
             <span className="rounded bg-[var(--color-line)] px-1.5 py-0.5 font-mono text-[12px] text-[var(--color-ink)]">
               takeout.google.com
             </span>{' '}
-            → décoche tout → coche seulement <b>Tasks</b>.
+            → deselect all → select only <b>Tasks</b>.
           </li>
-          <li>2. Exporte, télécharge l’archive et décompresse-la.</li>
+          <li>2. Export, download the archive and unzip it.</li>
           <li>
-            3. Dépose le fichier <b>Tasks.json</b> ci-dessous (ou colle son contenu).
+            3. Drop the <b>Tasks.json</b> file below (or paste its content).
           </li>
         </ol>
 
@@ -100,10 +100,10 @@ export default function ImportModal() {
           }`}
         >
           <span className="text-[13px] font-medium">
-            Glisse ton fichier <b>Tasks.json</b> ici
+            Drop your <b>Tasks.json</b> file here
           </span>
           <span className="mt-0.5 text-[12px] text-[var(--color-faint)]">
-            ou clique pour le sélectionner
+            or click to select it
           </span>
           <input
             type="file"
@@ -118,7 +118,7 @@ export default function ImportModal() {
 
         <details className="mt-3">
           <summary className="cursor-pointer text-[12px] text-[var(--color-muted)]">
-            …ou coller le JSON manuellement
+            …or paste the JSON manually
           </summary>
           <textarea
             value={raw}
@@ -135,15 +135,15 @@ export default function ImportModal() {
 
         {stats && stats.lists > 0 && (
           <div className="mt-4 rounded-lg bg-[var(--color-app)] px-3 py-2.5 text-[13px]">
-            Détecté :{' '}
+            Detected:{' '}
             <b>
-              {stats.lists} liste{stats.lists > 1 ? 's' : ''}
+              {stats.lists} list{stats.lists > 1 ? 's' : ''}
             </b>
             ,{' '}
             <b>
-              {stats.tasks} tâche{stats.tasks > 1 ? 's' : ''}
+              {stats.tasks} task{stats.tasks > 1 ? 's' : ''}
             </b>{' '}
-            <span className="text-[var(--color-faint)]">({stats.done} terminées)</span>
+            <span className="text-[var(--color-faint)]">({stats.done} completed)</span>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
               {lists!.slice(0, 40).map((l, i) => (
                 <span
@@ -164,7 +164,7 @@ export default function ImportModal() {
             onChange={(e) => setClear(e.target.checked)}
             className="h-4 w-4 accent-[var(--color-accent)]"
           />
-          Remplacer les projets et tâches actuels (recommandé pour la première fois)
+          Replace current projects and tasks (recommended for the first time)
         </label>
 
         <div className="mt-4 flex justify-end gap-2">
@@ -172,14 +172,14 @@ export default function ImportModal() {
             onClick={() => setOpen(false)}
             className="rounded-lg px-4 py-2 text-[13px] text-[var(--color-muted)] hover:bg-[var(--color-line)]"
           >
-            Annuler
+            Cancel
           </button>
           <button
             onClick={doImport}
             disabled={!stats || stats.lists === 0}
             className="rounded-lg bg-[var(--color-accent)] px-4 py-2 text-[13px] font-medium text-white disabled:opacity-40"
           >
-            Importer{stats && stats.tasks ? ` ${stats.tasks} tâches` : ''}
+            Import{stats && stats.tasks ? ` ${stats.tasks} tasks` : ''}
           </button>
         </div>
       </div>

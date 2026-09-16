@@ -35,7 +35,7 @@ const QuickAdd = forwardRef<HTMLInputElement>((_, ref) => {
   const fallbackId =
     filter !== ALL && filter !== STARRED
       ? filter
-      : (projects.find((p) => p.name === 'Mes tâches') ?? projects[0])?.id
+      : (projects.find((p) => p.name === 'Inbox') ?? projects[0])?.id
 
   // Reset the manual pick when the active filter changes.
   useEffect(() => setPicked(null), [filter])
@@ -88,14 +88,14 @@ const QuickAdd = forwardRef<HTMLInputElement>((_, ref) => {
               ;(e.target as HTMLInputElement).blur()
             }
           }}
-          placeholder="Ajouter une tâche…  (#projet ou ⇥ pour choisir)"
+          placeholder="Add a task…  (#project or ⇥ to choose)"
           className="min-w-0 flex-1 bg-transparent text-[14px] outline-none placeholder:text-[var(--color-faint)]"
         />
         {project && (
           <button
             type="button"
             onClick={openPicker}
-            title="Changer de projet (⇥)"
+            title="Change project (⇥)"
             className="flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-[12px] font-medium transition-transform hover:scale-[1.03]"
             style={{ background: chipBg(project.color), color: chipText(project.color) }}
           >
@@ -133,13 +133,13 @@ const QuickAdd = forwardRef<HTMLInputElement>((_, ref) => {
                   setTimeout(() => inputRef.current?.focus(), 0)
                 }
               }}
-              placeholder="Projet…"
+              placeholder="Project…"
               className="w-full border-b border-[var(--color-line)] bg-transparent px-3 py-2 text-[13px] outline-none placeholder:text-[var(--color-faint)]"
             />
             <div className="max-h-64 overflow-y-auto p-1">
               {filtered.length === 0 && (
                 <div className="px-3 py-3 text-center text-[12px] text-[var(--color-faint)]">
-                  Aucun projet
+                  No project
                 </div>
               )}
               {filtered.map((p, i) => (

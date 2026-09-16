@@ -68,7 +68,7 @@ function SignIn() {
     setErr('')
     const { error } = await verifyCode(email, c)
     setBusy(false)
-    if (error) setErr('Code invalide ou expiré.')
+    if (error) setErr('Invalid or expired code.')
   }
 
   return (
@@ -92,21 +92,21 @@ function SignIn() {
               />
             </svg>
           </div>
-          <div className="text-[19px] font-semibold tracking-tight">Bienvenue sur Tasks</div>
+          <div className="text-[19px] font-semibold tracking-tight">Welcome to Tasks</div>
           <div className="mt-1 text-[13px] leading-relaxed text-[var(--color-muted)]">
-            Connecte-toi pour synchroniser tes tâches
+            Sign in to sync your tasks
             <br />
-            entre tous tes appareils.
+            across all your devices.
           </div>
         </div>
 
         {sent ? (
           <div>
             <div className="mb-3 rounded-xl bg-[color-mix(in_srgb,var(--color-accent)_10%,transparent)] px-4 py-3 text-center text-[13px] leading-relaxed text-[var(--color-ink)]">
-              📬 Email envoyé à <b>{email}</b>.
+              📬 Email sent to <b>{email}</b>.
               <br />
               <span className="text-[12px] text-[var(--color-muted)]">
-                Saisis le <b>code à 6 chiffres</b> reçu ci-dessous.
+                Enter the <b>6-digit code</b> you received below.
               </span>
             </div>
             <input
@@ -123,11 +123,11 @@ function SignIn() {
               disabled={busy || !code.trim()}
               className="w-full rounded-xl bg-[var(--color-accent)] py-2.5 text-[14px] font-medium text-white transition-opacity hover:opacity-95 disabled:opacity-40"
             >
-              {busy ? '…' : 'Se connecter'}
+              {busy ? '…' : 'Sign in'}
             </button>
             <div className="mt-3 flex items-center justify-center gap-3 text-[12px] text-[var(--color-muted)]">
               <button onClick={magic} className="hover:text-[var(--color-accent)]">
-                Renvoyer un code
+                Resend a code
               </button>
               <span className="text-[var(--color-faint)]">·</span>
               <button
@@ -137,7 +137,7 @@ function SignIn() {
                 }}
                 className="hover:text-[var(--color-accent)]"
               >
-                Autre adresse
+                Other address
               </button>
             </div>
           </div>
@@ -148,11 +148,11 @@ function SignIn() {
               className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-[var(--color-line)] py-2.5 text-[14px] font-medium transition-colors hover:bg-[var(--color-line)]"
             >
               <GoogleGlyph />
-              Continuer avec Google
+              Continue with Google
             </button>
             <div className="my-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-[var(--color-faint)]">
               <div className="h-px flex-1 bg-[var(--color-line)]" />
-              ou
+              or
               <div className="h-px flex-1 bg-[var(--color-line)]" />
             </div>
             <input
@@ -161,7 +161,7 @@ function SignIn() {
               onKeyDown={(e) => e.key === 'Enter' && (mode === 'magic' ? magic() : password_())}
               type="email"
               autoFocus
-              placeholder="ton@email.com"
+              placeholder="you@email.com"
               className="mb-2.5 w-full rounded-xl border border-[var(--color-line)] bg-[var(--color-app)] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[color-mix(in_srgb,var(--color-accent)_55%,var(--color-line))]"
             />
             {mode === 'password' && (
@@ -170,7 +170,7 @@ function SignIn() {
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && password_()}
                 type="password"
-                placeholder="mot de passe"
+                placeholder="password"
                 className="mb-2.5 w-full rounded-xl border border-[var(--color-line)] bg-[var(--color-app)] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[color-mix(in_srgb,var(--color-accent)_55%,var(--color-line))]"
               />
             )}
@@ -182,8 +182,8 @@ function SignIn() {
               {busy
                 ? '…'
                 : mode === 'magic'
-                  ? 'Recevoir un code par email'
-                  : 'Se connecter'}
+                  ? 'Get a code by email'
+                  : 'Sign in'}
             </button>
             <button
               onClick={() => {
@@ -193,8 +193,8 @@ function SignIn() {
               className="mt-3 w-full text-center text-[12px] text-[var(--color-muted)] hover:text-[var(--color-accent)]"
             >
               {mode === 'magic'
-                ? 'Se connecter avec un mot de passe (app Mac)'
-                : '← Recevoir plutôt un lien par email'}
+                ? 'Sign in with a password (Mac app)'
+                : '← Get an email link instead'}
             </button>
           </>
         )}

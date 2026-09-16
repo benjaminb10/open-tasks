@@ -29,45 +29,45 @@ export default function CommandPalette() {
     const list: Cmd[] = [
       {
         id: 'v-all',
-        label: 'Aller à : Toutes les tâches',
+        label: 'Go to: All tasks',
         run: () => ui.setFilter(ALL),
       },
-      { id: 'v-star', label: 'Aller à : Suivies', run: () => ui.setFilter(STARRED) },
+      { id: 'v-star', label: 'Go to: Followed', run: () => ui.setFilter(STARRED) },
       ...projects.map((p) => ({
         id: 'go-' + p.id,
-        label: 'Aller à : ' + p.name,
+        label: 'Go to: ' + p.name,
         dot: DOT[p.color],
         run: () => ui.setFilter(p.id),
       })),
       {
         id: 'toggle-view',
-        label: 'Basculer vue liste / tableau',
+        label: 'Toggle list / board view',
         hint: 'b',
         run: () => ui.toggleView(),
       },
       {
         id: 'toggle-done',
-        label: 'Afficher / masquer les terminées',
+        label: 'Show / hide completed',
         run: () => store.toggleShowCompleted(),
       },
       {
         id: 'toggle-starred',
-        label: 'Afficher uniquement les suivies (dans la vue courante)',
+        label: 'Show followed only (in the current view)',
         hint: 'f',
         run: () => ui.toggleStarredOnly(),
       },
       {
         id: 'new-project',
-        label: 'Nouveau projet',
+        label: 'New project',
         run: () => {
-          const id = store.addProject('Nouveau projet')
+          const id = store.addProject('New project')
           ui.setFilter(id)
           ui.setProjectEditorOpen(true)
         },
       },
       {
         id: 'import',
-        label: 'Importer depuis Google Tasks',
+        label: 'Import from Google Tasks',
         run: () => ui.setImportOpen(true),
       },
     ]
@@ -75,7 +75,7 @@ export default function CommandPalette() {
     if (cur) {
       list.push({
         id: 'edit-project',
-        label: `Renommer / supprimer « ${cur.name} »`,
+        label: `Rename / delete "${cur.name}"`,
         dot: DOT[cur.color],
         run: () => ui.setProjectEditorOpen(true),
       })
@@ -85,7 +85,7 @@ export default function CommandPalette() {
         if (p.id === selectedTask.projectId) continue
         list.push({
           id: 'move-' + p.id,
-          label: `Déplacer « ${trunc(selectedTask.title)} » vers ${p.name}`,
+          label: `Move "${trunc(selectedTask.title)}" to ${p.name}`,
           dot: DOT[p.color],
           run: () => store.moveTaskToProject(selectedTask.id, p.id),
         })
@@ -140,13 +140,13 @@ export default function CommandPalette() {
               setOpen(false)
             }
           }}
-          placeholder="Tape une commande…"
+          placeholder="Type a command…"
           className="w-full border-b border-[var(--color-line)] bg-transparent px-4 py-3.5 text-[15px] outline-none placeholder:text-[var(--color-faint)]"
         />
         <div className="max-h-[320px] overflow-y-auto p-1.5">
           {filtered.length === 0 && (
             <div className="px-3 py-6 text-center text-[13px] text-[var(--color-faint)]">
-              Aucune commande
+              No command
             </div>
           )}
           {filtered.map((c, idx) => (

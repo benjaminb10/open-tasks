@@ -28,7 +28,7 @@ function Column({ project }: { project: Project }) {
   const selectedId = useUI((s) => s.selectedId)
   const [text, setText] = useState('')
 
-  // The board respects the "Suivies" view (filter) as well as the star toggle.
+  // The board respects the "Followed" view (filter) as well as the star toggle.
   const starredView = starredOnly || filter === STARRED
   const list = visibleTasks(tasks, project.id, search, showCompleted, starredView)
   const open = tasks.filter(
@@ -58,7 +58,7 @@ function Column({ project }: { project: Project }) {
                 ;(e.target as HTMLInputElement).blur()
               }
             }}
-            placeholder="Ajouter…"
+            placeholder="Add…"
             className="w-full bg-transparent text-[13px] text-[var(--color-ink)] outline-none placeholder:text-[var(--color-faint)]"
           />
         </div>
@@ -75,7 +75,7 @@ function Column({ project }: { project: Project }) {
         ))}
         {list.length === 0 && (
           <div className="px-3 py-6 text-center text-[12px] text-[var(--color-faint)]">
-            Vide
+            Empty
           </div>
         )}
       </div>

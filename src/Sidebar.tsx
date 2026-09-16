@@ -42,20 +42,20 @@ export default function Sidebar() {
           active={filter === ALL}
           onClick={() => setFilter(ALL)}
           icon={<Layers className="h-[18px] w-[18px]" />}
-          label="Toutes les tâches"
+          label="All tasks"
           count={totalOpen}
         />
         <Row
           active={filter === STARRED}
           onClick={() => setFilter(STARRED)}
           icon={<StarOutline className="h-[18px] w-[18px]" />}
-          label="Suivies"
+          label="Followed"
           count={starredOpen}
         />
       </nav>
 
       <div className="mt-4 px-4 pb-1 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-faint)]">
-        Projets
+        Projects
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-2">
@@ -103,7 +103,7 @@ export default function Sidebar() {
                   setFilter(p.id)
                   useUI.getState().setProjectEditorOpen(true)
                 }}
-                title="Options du projet (renommer, couleur, supprimer)"
+                title="Project options (rename, color, delete)"
                 className="hidden h-5 w-5 shrink-0 place-items-center rounded text-[var(--color-faint)] hover:bg-[var(--color-app)] hover:text-[var(--color-ink)] group-hover:grid"
               >
                 <More className="h-4 w-4" />
@@ -116,7 +116,7 @@ export default function Sidebar() {
       <div className="mx-2 mb-1 mt-1 border-t border-[var(--color-line)] pt-1">
         <button
           onClick={() => {
-            const id = addProject('Nouveau projet')
+            const id = addProject('New project')
             setFilter(id)
             useUI.getState().setProjectEditorOpen(true)
             edit(null)
@@ -124,14 +124,14 @@ export default function Sidebar() {
           className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-[var(--color-muted)] transition-colors hover:bg-[var(--color-line)]"
         >
           <Plus className="h-4 w-4" />
-          Nouveau projet
+          New project
         </button>
         <button
           onClick={() => useUI.getState().setImportOpen(true)}
           className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[13px] text-[var(--color-muted)] transition-colors hover:bg-[var(--color-line)]"
         >
           <Download className="h-4 w-4" />
-          Importer Google Tasks
+          Import Google Tasks
         </button>
         <AccountRow />
       </div>
@@ -152,11 +152,11 @@ function AccountRow() {
 
   async function save() {
     if (pw.length < 6) {
-      setMsg('6 caractères min.')
+      setMsg('6 characters min.')
       return
     }
     const { error } = await setPassword(pw)
-    setMsg(error ?? '✓ Mot de passe défini')
+    setMsg(error ?? '✓ Password set')
     if (!error) setPw('')
   }
 
@@ -164,16 +164,16 @@ function AccountRow() {
     <div>
       <button
         onClick={() => setOpen((o) => !o)}
-        title="Compte"
+        title="Account"
         className="group flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[12px] text-[var(--color-faint)] transition-colors hover:bg-[var(--color-line)]"
       >
-        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" title="Synchronisé" />
+        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" title="Synced" />
         <span className="min-w-0 flex-1 truncate text-left">{email}</span>
       </button>
       {open && (
         <div className="mx-1 mb-1 rounded-lg bg-[var(--color-app)] p-2">
           <div className="mb-1.5 px-1 text-[11px] text-[var(--color-faint)]">
-            Définir un mot de passe (pour l'app Mac) :
+            Set a password (for the Mac app):
           </div>
           <div className="flex gap-1.5">
             <input
@@ -184,7 +184,7 @@ function AccountRow() {
               }}
               onKeyDown={(e) => e.key === 'Enter' && save()}
               type="password"
-              placeholder="mot de passe"
+              placeholder="password"
               className="min-w-0 flex-1 rounded-md border border-[var(--color-line)] bg-[var(--color-panel)] px-2 py-1 text-[12px] outline-none"
             />
             <button
@@ -199,7 +199,7 @@ function AccountRow() {
             onClick={() => signOut()}
             className="mt-2 w-full rounded-md px-2 py-1 text-left text-[12px] text-red-500 hover:bg-[color-mix(in_srgb,red_10%,transparent)]"
           >
-            Se déconnecter
+            Sign out
           </button>
         </div>
       )}

@@ -18,7 +18,7 @@ export const useAuth = create<AuthState>(() => ({
   ready: !syncEnabled, // if sync off, we're "ready" immediately (local-only mode)
 
   signInEmail: async (email) => {
-    if (!supabase) return { error: 'Sync non configurée' }
+    if (!supabase) return { error: 'Sync not configured' }
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       options: { emailRedirectTo: window.location.origin },
@@ -27,7 +27,7 @@ export const useAuth = create<AuthState>(() => ({
   },
 
   signInPassword: async (email, password) => {
-    if (!supabase) return { error: 'Sync non configurée' }
+    if (!supabase) return { error: 'Sync not configured' }
     const { error } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password,
@@ -36,7 +36,7 @@ export const useAuth = create<AuthState>(() => ({
   },
 
   verifyCode: async (email, token) => {
-    if (!supabase) return { error: 'Sync non configurée' }
+    if (!supabase) return { error: 'Sync not configured' }
     const { error } = await supabase.auth.verifyOtp({
       email: email.trim(),
       token: token.trim(),
@@ -46,13 +46,13 @@ export const useAuth = create<AuthState>(() => ({
   },
 
   setPassword: async (password) => {
-    if (!supabase) return { error: 'Sync non configurée' }
+    if (!supabase) return { error: 'Sync not configured' }
     const { error } = await supabase.auth.updateUser({ password })
     return error ? { error: error.message } : {}
   },
 
   signInGoogle: async () => {
-    if (!supabase) return { error: 'Sync non configurée' }
+    if (!supabase) return { error: 'Sync not configured' }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: window.location.origin },

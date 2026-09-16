@@ -21,9 +21,9 @@ export default function TaskList() {
     return (
       <div className="grid h-full place-items-center text-center">
         <div className="text-[var(--color-faint)]">
-          <div className="text-[15px] font-medium">Rien ici pour l’instant</div>
+          <div className="text-[15px] font-medium">Nothing here yet</div>
           <div className="mt-1 text-[13px]">
-            Ajoute une tâche ci-dessus{search ? ' ou change ta recherche' : ''}.
+            Add a task above{search ? ' or change your search' : ''}.
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@ export default function TaskList() {
       {doneTasks.length > 0 && (
         <>
           <div className="mt-5 mb-1 px-3 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-faint)]">
-            Terminées · {doneTasks.length}
+            Completed · {doneTasks.length}
           </div>
           <div className="flex flex-col opacity-80">
             {doneTasks.map((t) => (

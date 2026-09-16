@@ -81,17 +81,17 @@ export default function App() {
 function Footer() {
   return (
     <div className="hidden items-center gap-3 border-t border-[var(--color-line)] px-6 py-1.5 text-[11px] text-[var(--color-faint)] md:flex">
-      <Kbd>⌘K</Kbd> commandes
-      <Kbd>n</Kbd> ajouter
+      <Kbd>⌘K</Kbd> commands
+      <Kbd>n</Kbd> add
       <Kbd>j</Kbd>
-      <Kbd>k</Kbd> naviguer
-      <Kbd>x</Kbd> cocher
-      <Kbd>e</Kbd> éditer
-      <Kbd>s</Kbd> suivre
-      <Kbd>f</Kbd> suivies
-      <Kbd>1-9</Kbd> projet
-      <Kbd>b</Kbd> vue
-      <Kbd>⌘Z</Kbd> annuler
+      <Kbd>k</Kbd> navigate
+      <Kbd>x</Kbd> done
+      <Kbd>e</Kbd> edit
+      <Kbd>s</Kbd> follow
+      <Kbd>f</Kbd> followed
+      <Kbd>1-9</Kbd> project
+      <Kbd>b</Kbd> view
+      <Kbd>⌘Z</Kbd> undo
     </div>
   )
 }

@@ -51,7 +51,8 @@ Fix the dark-mode contrast #Design
 Call the plumber #Personal
 ```
 
-- The `#tag` is stripped from the title, so the saved task reads "Draft the launch email" and gets the Marketing tag.
+- As soon as you type `#`, the app suggests matching projects, terminal style: the best match appears as grey ghost text right after what you typed. Press `Tab` (or `→`) to complete it, `↑`/`↓` to pick another match, `Escape` to dismiss. `#mar` + `Tab` becomes `#Marketing`.
+- The `#tag` is stripped from the title, so the saved task reads "Draft the launch email" and gets the Marketing tag. If you type several tags, the last one wins.
 - If the project does not exist yet, it is created on the fly with a fresh color.
 - Prefer to pick from a list? Press `Tab` inside the quick-add field to open the project picker instead of typing the name.
 
@@ -119,7 +120,8 @@ Use "Importer Google Tasks" in the sidebar to bring your existing lists and task
 | --- | --- |
 | `n` or `a` | New task (focus quick-add) |
 | `#name` (in quick-add) | File the task straight into that project |
-| `Tab` (in quick-add) | Open the project picker |
+| `Tab` after `#name` | Autocomplete the project name |
+| `Tab` (in quick-add, no `#`) | Open the project picker |
 | `Enter` | Save the task |
 | `j` / `ArrowDown` | Move selection down |
 | `k` / `ArrowUp` | Move selection up |
